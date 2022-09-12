@@ -4,7 +4,6 @@ function Init() {
     $.getJSON("/Data/Data.json",
         function (data, textStatus, jqXHR) {
             ImageData = data.ImageData
-            // console.log(ImageData)
         }
     );
 }

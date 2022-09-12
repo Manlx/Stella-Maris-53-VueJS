@@ -1,16 +1,17 @@
 
 <script lang="ts">
-    /* eslint-disable */
     import $ from 'jquery'
     import { defineComponent } from 'vue';
+    import {ImageData} from '../Classes/Interfaces'
     type DataReturn = {
         Index:number,
         PageRate:number,
         doTick:boolean,
-        FileInfo:DataJsonInterfaces.ImageData[]
+        FileInfo:ImageData[]
     }
 
     export default defineComponent({
+        name:"carouselComp",
         data:function():DataReturn{
             return {
                 Index: 0,
@@ -31,15 +32,16 @@
             },
             getData:function()
             {
-                let self = this;
+                // eslint-disable-next-line
+                let vm = this;
                 $.getJSON("/Data/Data.json",
                     function (data) {
-                        self.FileInfo = data.ImageData
-                        self.FileInfo = self.FileInfo.filter(function(e){
+                        vm.FileInfo = data.ImageData
+                        vm.FileInfo = vm.FileInfo.filter(function(e){
                             return !e.Tags.includes("Portrait")
                         })
-                        setInterval(self.tick,self.PageRate,self)
-                        self.loadData()
+                        setInterval(vm.tick,vm.PageRate)
+                        vm.loadData()
                     }
                 );
             },
@@ -51,7 +53,7 @@
                 `)
             },
             tick: function() {
-                console.log(this.doTick)
+                // console.log(this.doTick)
                 if (!this.doTick)
                     return;
                 this.btnRightClick()
@@ -73,7 +75,6 @@
         created:function(){
             this.PageRate = this.PageRateIn;
             console.log('Created Carousel')
-            // $(".carouselHolder").on("mouseenter",this.mouseEnter);
             $(".carouselHolder").mouseenter(this.mouseEnter);
             this.getData();
         }
