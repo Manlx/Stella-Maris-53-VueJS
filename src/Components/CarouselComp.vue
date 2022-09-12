@@ -14,42 +14,53 @@
         data:function():DataReturn{
             return {
                 Index: 0,
-                PageRate:2000,
+                PageRate:3000,
                 doTick:true,
                 FileInfo:[]
             }
         },
         components:{},
-        props:[],
+        props:["PageRateIn"],
         methods:{
+            mouseEnter:function()
+            {
+                this.doTick = false;
+            },
+            mouseLeave:function(){
+                this.doTick = true;
+            },
             getData:function()
             {
                 let self = this;
                 $.getJSON("/Data/Data.json",
                     function (data) {
                         self.FileInfo = data.ImageData
-    
+                        self.FileInfo = self.FileInfo.filter(function(e){
+                            return !e.Tags.includes("Portrait")
+                        })
                         setInterval(self.tick,self.PageRate,self)
                         self.loadData()
                     }
                 );
             },
+            
+            loadData: function() {  
+                $(".carouselDisplay").css("background-image",`url('${this.FileInfo[this.Index].ImagePath}')`);
+                $(".carouselTextHolder").html(`
+                <p class="carouselText">${this.FileInfo[this.Index].Description}</p>
+                `)
+            },
+            tick: function() {
+                console.log(this.doTick)
+                if (!this.doTick)
+                    return;
+                this.btnRightClick()
+                this.loadData()
+            },
             btnRightClick: function() {
                 this.Index++;
                 if (this.Index >= this.FileInfo.length)
                     this.Index = 0
-                this.loadData()
-            },
-            loadData: function() {  
-                $(".CarouselDisplay").css("background-image",`url('${this.FileInfo[this.Index].ImagePath}')`);
-                $(".CarouselInfo").html(`
-                <p class="CarouselText">${this.FileInfo[this.Index].Description}</p>
-                `);
-            },
-            tick: function() {
-                if (!this.doTick)
-                    return;
-                this.btnRightClick()
                 this.loadData()
             },
             btnLeftClick: function() {
@@ -60,67 +71,83 @@
             }
         },
         created:function(){
+            this.PageRate = this.PageRateIn;
             console.log('Created Carousel')
-            let doTick = this.doTick;
-            $(".CarouselHolder").mouseenter(function () { 
-            });
-            $(".CarouselHolder").mouseleave(function () { 
-                doTick= true
-            });
-
-            let VWUnit = screen.width/100;
-            let Ratio = screen.height/ screen.width
-            let Scale = 1
-            let Width = ($(".CarouselHolder").outerWidth()!)/VWUnit*Scale;
-            let Heigth = Width*Ratio;
-            $(".InnerScaler").css("width",`${Width}vw`);
-            $(".InnerScaler").css("height",`${Heigth}vw`);
-            
-
-            let ButtonHeight = ($(".CarouselButtonHolder").outerWidth()!)/VWUnit;
-            $(".CarouselButton").css("height",`${ButtonHeight}vw`);
+            // $(".carouselHolder").on("mouseenter",this.mouseEnter);
+            $(".carouselHolder").mouseenter(this.mouseEnter);
             this.getData();
-
-            
         }
     })
 </script>
 <template>
-    <div class="CarouselHolder" >
-        <div class="CarouselButton LeftButton"></div>
-        <div class="CarouselDisplay"></div>
-        <div class="CarouselButton RightButton"></div>
+    <div class="carouselHolder" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
+        <div class="carouselButton leftButton" @click="btnLeftClick"></div>
+        <div class="carouselDisplay">
+            <div class="carouselTextHolder">
+                <p class="carouselText"></p>
+            </div>
+        </div>
+        <div class="carouselButton rightButton" @click="btnRightClick"></div>
     </div>
 </template>
 <style>
-    .CarouselHolder{
+    .carouselHolder{
         width: 90vw;
         margin: auto;
-        height: 56vw;
+        height: 30vw;
         display: flex;
     }
-    .CarouselDisplay{
+    .carouselDisplay{
         display: flex;
         width: 80vw;
         background-color: #232323;
         height: 100%;
         border-radius: 20px;
         background-size: 100% 100%;
+        justify-content: center;
+        align-items: center;
     }
-    .CarouselButton{
+    .carouselButton{
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center;
         width: 5vw;
         height: 100%;
         margin: 0 3vw 0 3vw;
+        transition: 0.5s;
     }
-    .LeftButton{
+    
+    .leftButton{
         background-image: url('../../public/Icons/LeftArrow.svg');
         
     }
-    .RightButton{
+    .rightButton{
         background-image: url('../../public/Icons/RightArrow.svg');
         
+    }
+    .leftButton:hover{
+        filter:  drop-shadow(10px 10px 4px #232323);
+    }
+    .rightButton:hover{
+        filter:  drop-shadow(-10px 10px 4px #232323);
+    }
+    .carouselTextHolder{
+        transition: 1s;
+        display: flex;
+        opacity: 0;
+        width: 80%;
+        height: 60%;
+        background-color: #232323;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        padding: 1vw;
+    }
+    .carouselDisplay:hover > .carouselTextHolder{
+        opacity: 0.8;
+    }
+    .carouselText{
+        color: white;
+        font-size: 4vw;
     }
 </style>

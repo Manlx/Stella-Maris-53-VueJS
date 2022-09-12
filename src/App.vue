@@ -9,7 +9,7 @@ export default defineComponent({
 </script>
 <template>
 <p>Hi from App</p>
-<CarouselComp/>
+<CarouselComp :PageRateIn="3000"/>
 </template>
 
 <style>
