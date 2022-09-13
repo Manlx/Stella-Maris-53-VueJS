@@ -122,8 +122,9 @@
         <div class="imageHolder" id="LandScapeDisplay">
         </div>
         <div class="imageHolder" id="PortraitDisplay">
+            
         </div>
-    </div>      
+    </div>
 </template>
 <script lang="ts">
 import {ImageData} from '../Classes/Interfaces'
@@ -214,8 +215,11 @@ export default defineComponent(
                 let temp = ""
                 Array.forEach(element => {
                     temp += `
-                    <div style="background-image: url('${element.ImagePath}'); width:100%;height:${ImageHeight}vw;" class="landScapeImage">
-                    </div>`
+                    <div class="flexCenter">
+                        <div style="background-image: url('${element.ImagePath}'); width:100%;height:${ImageHeight}vw;" class="PortraitImage">
+                        </div>
+                    </div>
+                    `
                 });
                 $(`#${ID}`).html(temp);
             }
@@ -224,6 +228,14 @@ export default defineComponent(
 )
 </script>
 <style>
+    .PortraitImage{
+        max-height: 90vh;
+        max-width: 50vw;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        border-radius: 20px;
+    }
     .imagePickerHolder{
         flex-direction: column;
         margin: 5vh;
@@ -232,7 +244,7 @@ export default defineComponent(
         fill: rgba(0,0,0,0);
     }
     .selectionRegion{
-        transition: var(--TransTime);
+        transition: 1s;
     }
     .selectionRegion:hover{
         fill: rgba(0, 174, 197, 0.8);
