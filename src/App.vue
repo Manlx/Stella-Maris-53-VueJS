@@ -1,17 +1,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Header from './Components/header.vue';
+import NavBar from './Components/navBar.vue';
 
 export default defineComponent({
-    components: { Header}
+    components: { Header, NavBar }
 })
 
 </script>
 <template>
 <Header/>
+<NavBar/>
 <RouterView/>
-<!-- <ImagePicker/> -->
-<!-- <CarouselComp :PageRateIn="3000"/> -->
 </template>
 
 <style>
@@ -21,10 +21,12 @@ export default defineComponent({
     }
     body{
         background-image: linear-gradient(white,rgb(42, 76, 115));
+        min-height: 100vh;
     }
     .flexCenter{
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    
 </style>
