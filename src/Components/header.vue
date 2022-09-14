@@ -39,20 +39,28 @@ export default defineComponent({
         min-width: 500px;
         min-height: 90px;
         max-width: 800px;
-        background-image: url('../../public/Resources/Stella_Maris_6.png');
+        background-image: url('../../public/Resources/Stella_Maris_6V2.png');
         background-size: 100% 100%;
+        transition: 1s;
+        margin: 1vw;
+    }
+    #TitleHolder:hover{
+        filter:  drop-shadow(-10px 10px 4px #232323);
     }
     .logo{
         background-position: center;
         background-size: 100% 100%;
         display: flex;
-        height: 28vh;
-        width: 28vh;
-        margin: 1vh;
+        height: 30vh;
+        width: 30vh;
+        
         border-radius: 20px;
         background-image: url('../../public/Icons/Stella_Maris_5.png');
+        transition: 1s;
     }
-    
+    .logo:hover{
+        filter:  drop-shadow(-10px 10px 4px #232323);
+    }
     #SubTitle{
         font-size: var(--AverageFontSize);
     }

@@ -1,5 +1,6 @@
 
 <script lang="ts">
+    let intervalID = -1;
     import $ from 'jquery'
     import { defineComponent } from 'vue';
     import {ImageData} from '../Classes/Interfaces'
@@ -40,7 +41,9 @@
                         vm.FileInfo = vm.FileInfo.filter(function(e){
                             return !e.Tags.includes("Portrait")
                         })
-                        setInterval(vm.tick,vm.PageRate)
+                        clearInterval(intervalID)
+                        intervalID = setInterval(vm.tick,vm.PageRate)
+
                         vm.loadData()
                     }
                 );
@@ -95,7 +98,7 @@
     .carouselHolder{
         width: 90vw;
         margin: auto;
-        height: 30vw;
+        height: 40vw;
         display: flex;
     }
     .carouselDisplay{
@@ -114,7 +117,7 @@
         background-position: center;
         width: 5vw;
         height: 100%;
-        margin: 0 3vw 0 3vw;
+        margin: 0 1vw 0 1vw;
         transition: 0.5s;
     }
     
