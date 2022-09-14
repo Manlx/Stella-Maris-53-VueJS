@@ -1,18 +1,17 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CarouselComp from './Components/carouselComp.vue';
 import Header from './Components/header.vue';
-import ImagePicker from './Components/imagePicker.vue';
 
 export default defineComponent({
-    components: { CarouselComp, Header, ImagePicker }
+    components: { Header}
 })
 
 </script>
 <template>
 <Header/>
-<ImagePicker/>
-<CarouselComp :PageRateIn="3000"/>
+<RouterView/>
+<!-- <ImagePicker/> -->
+<!-- <CarouselComp :PageRateIn="3000"/> -->
 </template>
 
 <style>

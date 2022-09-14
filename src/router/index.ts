@@ -1,11 +1,19 @@
+import PhotosPageVue from '@/Pages/PhotosPage.vue'
+import HomePageVue from '@/Pages/HomePage.vue'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component:[]
+    name: 'Home',
+    component:HomePageVue
   },
+  {
+    path: '/Photos',
+    name: 'Photos',
+    component:PhotosPageVue
+  },
+  
 ]
 
 const router = createRouter({
