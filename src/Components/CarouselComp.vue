@@ -107,9 +107,10 @@
         background-color: #232323;
         height: 100%;
         border-radius: 20px;
-        background-size: 100% 100%;
+        background-size: cover;
         justify-content: center;
         align-items: center;
+        transition: 1s;
     }
     .carouselButton{
         background-size: 100% 100%;

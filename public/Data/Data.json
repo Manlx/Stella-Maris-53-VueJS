@@ -330,5 +330,17 @@
             "Tags":["Outside","Sea","Beach","View"],
             "Location":["Outside"]
         }
+    ],
+    "tariffs":[
+        {
+            "from":"2022-09-01",
+            "to":"2022-09-29",
+            "perNight":850
+        },
+        {
+            "from":"2022-10-01",
+            "to":"2022-09-09",
+            "perNight":1000
+        }
     ]
 }

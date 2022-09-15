@@ -77,6 +77,7 @@ export default defineComponent({
     }
     
     .header{
+        padding-top: 1vh;
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
         background-image: linear-gradient(rgb(42, 76, 115),transparent);

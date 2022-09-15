@@ -4,11 +4,11 @@
             <router-link class="routerLinkStyle" to="/AvailabilityPage">Availability</router-link>
             <router-link class="routerLinkStyle" to="/BookingPage">Booking</router-link>
             <router-link class="routerLinkStyle" to="/ContactPage">Contact</router-link>
+            <router-link class="routerLinkStyle" to="/FeaturesPage">Features</router-link>
             <router-link class="routerLinkStyle" to="/">Home</router-link>
             <router-link class="routerLinkStyle" to="/PhotosPage">Photos</router-link>
             <router-link class="routerLinkStyle" to="/SpecialsPage">Specials</router-link>
             <router-link class="routerLinkStyle" to="/TariffsPage">Tariffs</router-link>
-            
         </div>
     </div>
 </template>

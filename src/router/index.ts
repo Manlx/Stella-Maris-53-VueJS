@@ -6,6 +6,7 @@ import BookingPageVue from '@/Pages/BookingPage.vue'
 import ContactPageVue from '@/Pages/ContactPage.vue'
 import SpecialsPageVue from '@/Pages/SpecialsPage.vue'
 import TariffsPageVue from '@/Pages/TariffsPage.vue'
+import FeaturesPageVue from '@/Pages/FeaturesPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
 
@@ -25,6 +26,11 @@ const routes: Array<RouteRecordRaw> = [
     component:ContactPageVue
   },
   {
+    path: '/FeaturesPage',
+    name: 'FeaturesPage',
+    component:FeaturesPageVue
+  },
+  {
     path: '/',
     name: 'Home',
     component:HomePageVue
@@ -34,6 +40,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'PhotosPage',
     component:PhotosPageVue
   },
+  
   {
     path: '/SpecialsPage',
     name: 'SpecialsPage',

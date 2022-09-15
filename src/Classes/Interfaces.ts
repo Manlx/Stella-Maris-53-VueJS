@@ -7,5 +7,11 @@ export interface ImageData {
 
 export interface RootObject {
     ImageData: ImageData[];
+    tariffs: Tariff[];
 }
 
+export interface Tariff {
+    from: string;
+    to: string;
+    perNight: number;
+}
