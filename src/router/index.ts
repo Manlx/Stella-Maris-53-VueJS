@@ -7,6 +7,7 @@ import ContactPageVue from '@/Pages/ContactPage.vue'
 import SpecialsPageVue from '@/Pages/SpecialsPage.vue'
 import TariffsPageVue from '@/Pages/TariffsPage.vue'
 import FeaturesPageVue from '@/Pages/FeaturesPage.vue'
+import EditDataPageVue from '@/Pages/EditDataPage.vue'
 
 const routes: Array<RouteRecordRaw> = [
 
@@ -50,6 +51,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/TariffsPage',
     name: 'TariffsPage',
     component:TariffsPageVue
+  },
+  {
+    path: '/EditDataPage',
+    name: 'EditDataPage',
+    component:EditDataPageVue
   },
 ]
 

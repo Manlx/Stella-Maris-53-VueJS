@@ -15,3 +15,8 @@ export interface Tariff {
     to: string;
     perNight: number;
 }
+
+export interface LinkedPDF {
+    name: string;
+    link: string;
+}

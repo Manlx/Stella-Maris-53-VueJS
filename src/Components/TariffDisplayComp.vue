@@ -69,11 +69,13 @@ export default defineComponent({
 </script>
 <style>
     .tariffTable{
-        background-color: bisque;
+        background-color: rgb(183,171,157);
         width: 80%;
         border-radius: 20px;
+        padding: 2vw;
     }
     .tariffTable th,tr{
+        text-align: center;
         color: green;
         font-size: xx-large;
     }
