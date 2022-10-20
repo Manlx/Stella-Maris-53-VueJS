@@ -119,25 +119,24 @@
             <rect class="SVGItem selectionRegion " @click="onAreaClick(8)" id="Hallway" x="482" y="522" width="520" height="80"  stroke="rgb(0, 0, 0)" stroke-width="5" pointer-events="all"></rect>
             </g>
         </svg>
-        <div class="imageHolder" id="LandScapeDisplay">
-        </div>
-        <div class="imageHolder" id="PortraitDisplay">
-            
-        </div>
+        <div class="imageHolder" id="LandScapeDisplay"></div>
+        <a href="#floorPlan" class="JumpLink">Select Other Area</a>
+        <div class="imageHolder" id="PortraitDisplay"></div>
+        <a href="#floorPlan" class="JumpLink">Select Other Area</a>
     </div>
 </template>
 <script lang="ts">
 import {ImageData} from '../Classes/Interfaces'
 import { defineComponent } from 'vue';
 import $ from 'jquery'
-type ReturnData = {
+type returnData = {
     FileInfo: ImageData[],
     FilteredImages: ImageData[],
     Locations:string[]
 }
 export default defineComponent(
     {
-        data:function():ReturnData{
+        data:function():returnData{
             return {
                 FileInfo:[],
                 FilteredImages:[],
@@ -150,6 +149,7 @@ export default defineComponent(
         },
         methods:{
             init: function() {
+                $(".JumpLink").hide();
                 // eslint-disable-next-line
                 let self = this;
                 $.getJSON("/Data/Data.json",
@@ -165,7 +165,8 @@ export default defineComponent(
                     return e.Location.includes(Tag);
                 })
                 // alert(Number)
-                this.displaySelectedImages(this.FilteredImages)
+                this.displaySelectedImages(this.FilteredImages);
+                (document.getElementById("LandScapeDisplay")!).scrollIntoView({behavior: 'smooth'});
             },
             displaySelectedImages: function(ImageArray:ImageData[]) {
                 let LandScapes = ImageArray.filter(function (e) { return !e.Tags.includes("Portrait") })
@@ -228,13 +229,21 @@ export default defineComponent(
 )
 </script>
 <style>
+    .JumpLink{
+        text-decoration: none;
+        color: var(--TextBlue);
+        background-color: var(--SandColor);
+        padding: 20px;
+        font-size: xx-large;
+        border-radius: var(--UniBorderRadius);
+    }
     .PortraitImage{
         max-height: 90vh;
         max-width: 50vw;
         background-position: center;
         background-repeat: no-repeat;
         background-size: 100% 100%;
-        border-radius: 20px;
+        border-radius: var(--UniBorderRadius);
     }
     .imagePickerHolder{
         flex-direction: column;
@@ -247,38 +256,33 @@ export default defineComponent(
         transition: 1s;
     }
     .selectionRegion:hover{
-        fill: rgba(0, 174, 197, 0.8);
+        fill: var(--TextBlueHover);
         cursor: pointer;
     }
     #floorPlan{
-        border-radius: 20px;
-        background-color: rgb(183,171,157);
-        width: 80vw;
+        border-radius: var(--UniBorderRadius);
+        background-color: var(--SandColor);
+        height: 75vh;
         padding: 2vw;
-    }
-    .temp{
-        fill: green;
-    }
-    .temp2{
-        fill: orange;
+        transition: 1s;
     }
     .imageHolder{
         display: grid;
         width: 80vw;
         min-height: 5vh;
-        margin-top: 5vh;
+        margin-top: 1vh;
         background-color: var(--DarkBlue);
         column-gap: 1vw;
         row-gap: 1vw;
         border-radius: var(--BorderRadi);
-        padding: 5vw;
+        padding: 1vw;
     }
     .landScapeImage{
         width: 100%;
         display: flex;
         background-position: center;
         background-size: 100% 100%;
-        border-radius: 20px;
+        border-radius: var(--UniBorderRadius);
     }
     .photoInstructions{
         background-color: var(--MeduimBlue);

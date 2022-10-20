@@ -31,7 +31,7 @@ export default defineComponent({
 </script>
 <style>
     #TitleHolder{
-        border-radius: 20px;
+        border-radius: var(--UniBorderRadius);
         padding: 20px;
         height: 70%;
         border: 3px solid white;
@@ -44,9 +44,7 @@ export default defineComponent({
         transition: 1s;
         margin: 1vw;
     }
-    #TitleHolder:hover{
-        filter:  drop-shadow(-10px 10px 4px #232323);
-    }
+
     .logo{
         background-position: center;
         background-size: 100% 100%;
@@ -54,29 +52,12 @@ export default defineComponent({
         height: 30vh;
         width: 30vh;
         
-        border-radius: 20px;
+        border-radius: var(--UniBorderRadius);
         background-image: url('../../public/Icons/Stella_Maris_5.png');
         transition: 1s;
     }
-    .logo:hover{
-        filter:  drop-shadow(-10px 10px 4px #232323);
-    }
-    #SubTitle{
-        font-size: var(--AverageFontSize);
-    }
-    
-    #SubTitleHolder{
-        grid-column: 2;
-        grid-row: 2;
-        
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color:  rgb(115,156,176);
-        border-radius: 20px;
-    }
-    
     .header{
+        padding-top: 1vh;
         display: grid;
         grid-template-columns: 1fr 3fr 1fr;
         background-image: linear-gradient(rgb(42, 76, 115),transparent);

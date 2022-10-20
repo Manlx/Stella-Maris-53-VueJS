@@ -1,5 +1,0 @@
-function LogoInit()
-{
-
-}
-LogoInit()

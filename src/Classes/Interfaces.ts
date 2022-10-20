@@ -7,5 +7,17 @@ export interface ImageData {
 
 export interface RootObject {
     ImageData: ImageData[];
+    tariffs: Tariff[];
+    linkedPDF:LinkedPDF[];
 }
 
+export interface Tariff {
+    from: string;
+    to: string;
+    perNight: number;
+}
+
+export interface LinkedPDF {
+    name: string;
+    link: string;
+}

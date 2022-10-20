@@ -1,8 +1,15 @@
 <template>
     <div class="navBarHolder">
         <div class="navBarBack">
-            <router-link class="routerLinkStyle" to="/">Gaming</router-link>
-            <router-link class="routerLinkStyle" to="/Photos">Photos</router-link>
+            <router-link class="routerLinkStyle" to="/AvailabilityPage">Availability</router-link>
+            <router-link class="routerLinkStyle" to="/BookingPage">Booking</router-link>
+            <router-link class="routerLinkStyle" to="/ContactPage">Contact</router-link>
+            <router-link class="routerLinkStyle" to="/FeaturesPage">Features</router-link>
+            <router-link class="routerLinkStyle" to="/">Home</router-link>
+            <router-link class="routerLinkStyle" to="/PhotosPage">Photos</router-link>
+            <router-link class="routerLinkStyle" to="/SpecialsPage">Specials</router-link>
+            <router-link class="routerLinkStyle" to="/TariffsPage">Tariffs</router-link>
+            <router-link class="routerLinkStyle" to="/EditDataPage">Edit Data</router-link>
         </div>
     </div>
 </template>
@@ -17,24 +24,27 @@ export default defineComponent({
 </script>
 <style>
     .routerLinkStyle{
-        font-size: 3vw; 
+        font-size: 2vw; 
         text-decoration: none;
-        color: rgb(79,114,133);
+        color: var(--TextBlue);
         transition: 1s;
+        padding: 0 1vw;
+        border-left: solid 1px var(--TextBlue);
+        border-right: solid 1px var(--TextBlue);
     }
     .routerLinkStyle:hover{
         filter:  drop-shadow(-10px 10px 4px #232323);
-        color: rgb(14, 162, 242);
+        color: var(--TextBlueHover);
     }
     .navBarHolder{
         display: flex;
         justify-content: center;
     }
     .navBarBack{
-        background-color: rgb(183,171,157);
+        background-color: var(--SandColor);
         width: 80%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         border-radius: 20px;
         padding: 1vw;
         margin: 2vw;

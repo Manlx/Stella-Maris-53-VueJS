@@ -85,13 +85,19 @@
 </script>
 <template>
     <div class="carouselHolder" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
-        <div class="carouselButton leftButton" @click="btnLeftClick"></div>
+        <div class="buttonHolder">
+            <div class="carouselButton leftButton" @click="btnLeftClick">
+
+            </div>
+        </div>
         <div class="carouselDisplay">
             <div class="carouselTextHolder">
                 <p class="carouselText"></p>
             </div>
         </div>
-        <div class="carouselButton rightButton" @click="btnRightClick"></div>
+        <div class="buttonHolder">
+            <div class="carouselButton rightButton" @click="btnRightClick"></div>
+        </div>
     </div>
 </template>
 <style>
@@ -106,19 +112,20 @@
         width: 80vw;
         background-color: #232323;
         height: 100%;
-        border-radius: 20px;
-        background-size: 100% 100%;
+        border-radius: var(--UniBorderRadius);
+        background-size: cover;
         justify-content: center;
         align-items: center;
+        transition: 1s;
     }
     .carouselButton{
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center;
-        width: 5vw;
-        height: 100%;
-        margin: 0 1vw 0 1vw;
+        width: 10vw;
+        height: 10vw;
         transition: 0.5s;
+        cursor: pointer;
     }
     
     .leftButton{
@@ -142,7 +149,7 @@
         width: 80%;
         height: 60%;
         background-color: #232323;
-        border-radius: 20px;
+        border-radius: var(--UniBorderRadius);
         justify-content: center;
         align-items: center;
         padding: 1vw;
@@ -153,5 +160,11 @@
     .carouselText{
         color: white;
         font-size: 4vw;
+    }
+    .buttonHolder{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
     }
 </style>
